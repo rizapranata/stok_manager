@@ -60,8 +60,9 @@ include 'template/header.php';
                             echo "<th>{$barang->id_barang}</th>";
                             echo "<td>{$barang->nama_barang}</td>";
                             echo "<td>{$barang->jumlah_barang}</td>";
-                            echo "<td>".number_format($barang->harga_barang, 0, ',', '.').
-                            "</td>";
+                            echo "<td>$barang->harga_barang</td>";
+                            // echo "<td>".number_format($barang->harga_barang, 0, ',', '.').
+                            // "</td>";
                             $tanggal = new DateTime($barang->tanggal_update);
                             echo "<td>".$tanggal->format("d-m-Y H:i"). "</td>";
                             echo "<td>";
