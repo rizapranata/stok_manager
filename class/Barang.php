@@ -63,4 +63,8 @@ class Barang {
         $this->_db->update('barang',$newBarang,['id_barang','=',$id_barang]);
     }
 
+    public function delete($id_barang){
+        $this->_db->delete('barang',['id_barang','=',$id_barang]);
+    }
+
 }
