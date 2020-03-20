@@ -47,4 +47,20 @@ class Barang {
         return $this->_db->insert('barang',$newBarang);
     }
 
+    public function generate($id_barang){
+        $result = $this->_db->getWhereOnce('barang',['id_barang','=',$id_barang]);
+        foreach ($result as $key => $value) {
+            $this->_formItem[$key] = $value;
+        }
+    }
+
+    public function update($id_barang){
+        $newBarang = [
+            'nama_barang' => $this->getItem('nama_barang'),
+            'jumlah_barang' => $this->getItem('jumlah_barang'),
+            'harga_barang' => $this->getItem('harga_barang')
+        ];
+        $this->_db->update('barang',$newBarang,['id_barang','=',$id_barang]);
+    }
+
 }
