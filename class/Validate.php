@@ -23,66 +23,66 @@ class Validate{
         foreach ($rules as $rule => $ruleValue) {
             switch ($rule) {
                 case 'required':
-                    if ($ruleValue === TRUE && empty($formValue)) {
-                        $this->_errors[$item] = "$itemLabel tidak boleh kosong";
+                if ($ruleValue === TRUE && empty($formValue)) {
+                    $this->_errors[$item] = "$itemLabel tidak boleh kosong";
+                }
+                break;
+                
+                case 'min_char':
+                    if (strlen($formValue) < $ruleValue) {
+                        $this->_errors[$item] = "$itemLabel minimal $ruleValue karakter";
                     }
-                    break;
-                    
-                    case 'min_char':
-                        if (strlen($formValue) < $ruleValue) {
-                            $this->_errors[$item] = "$itemLabel minimal $ruleValue karakter";
-                        }
-                    break;
+                break;
 
-                    case 'max_char':
-                        if (strlen($formValue) > $ruleValue) {
-                            $this->_errors[$item] = "$itemLabel maksimal $ruleValue karakter";
-                        }
-                    break;
+                case 'max_char':
+                    if (strlen($formValue) > $ruleValue) {
+                        $this->_errors[$item] = "$itemLabel maksimal $ruleValue karakter";
+                    }
+                break;
 
-                    case 'numeric':
-                        if ($formValue < $ruleValue) {
-                            $this->_errors[$item] = "$itemLabel maksimal $ruleValue";
-                        }
-                    break;
+                case 'numeric':
+                    if ($formValue < $ruleValue) {
+                        $this->_errors[$item] = "$itemLabel maksimal $ruleValue";
+                    }
+                break;
 
-                    case 'min_value':
-                       if ($formValue < $ruleValue) {
-                           $this->_errors[$item] = "$itemLabel minimal $ruleValue";
-                       }
-                    break;
+                case 'min_value':
+                    if ($formValue < $ruleValue) {
+                        $this->_errors[$item] = "$itemLabel minimal $ruleValue";
+                    }
+                break;
 
-                    case 'max_value':
-                        if ($formValue > $ruleValue) {
-                            $this->_errors[$item] = "$itemLabel maksimal $ruleValue";
-                        }
-                    break;
+                case 'max_value':
+                    if ($formValue > $ruleValue) {
+                        $this->_errors[$item] = "$itemLabel maksimal $ruleValue";
+                    }
+                break;
 
-                    case 'matches':
-                        if ($formValue != $this->_formMethod[$ruleValue]) {
-                            $this->_errors[$item] = "$itemLabel tidak sama";
-                        }
-                    break;
+                case 'matches':
+                    if ($formValue != $this->_formMethod[$ruleValue]) {
+                        $this->_errors[$item] = "$itemLabel tidak sama";
+                    }
+                break;
 
-                    case 'email':
-                        if ($ruleValue === TRUE && !filter_var($formValue, FILTER_VALIDATE_EMAIL)) {
-                            $this->_errors[$item] = "Format $itemLabel tidak sesuai";
-                        }
-                    break;
+                case 'email':
+                    if ($ruleValue === TRUE && !filter_var($formValue, FILTER_VALIDATE_EMAIL)) {
+                        $this->_errors[$item] = "Format $itemLabel tidak sesuai";
+                    }
+                break;
 
-                    case 'regexp':
-                        if (!preg_match($ruleValue, $formValue)) {
-                            $this->_errors[$item] = "Pola $itemLabel tidak sesuai";
-                        }
-                    break;
+                case 'regexp':
+                    if (!preg_match($ruleValue, $formValue)) {
+                        $this->_errors[$item] = "Pola $itemLabel tidak sesuai";
+                    }
+                break;
 
-                    case 'unique':
-                        require_once '../DB_CLASS/DB.php';
-                        $DB = DB::getInstance();
-                        if ($DB->check($ruleValue[0], $ruleValue[1],$formValue)) {
-                           $this->_errors[$item] = "$itemLabel sudah terpakai, silahkan pilih nama lain";
-                        }
-                    break;
+                case 'unique':
+                    require_once 'class/DB.php';
+                    $DB = DB::getInstance();
+                    if ($DB->check($ruleValue[0], $ruleValue[1],$formValue)) {
+                        $this->_errors[$item] = "$itemLabel sudah terpakai, silahkan pilih nama lain";
+                    }
+                break;
             }
 
             // cek jika sudah ada error di item yang sama, Langsng keluar dr loop
