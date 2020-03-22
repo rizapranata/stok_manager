@@ -10,7 +10,7 @@ if (!empty($_POST)) {
     $pesanError = $user->validasiInsert($_POST);
     if (empty($pesanError)) {
         $user->insert();
-        header('Location: register_barhasil.php');
+        header('Location:register_berhasil.php');
     }
 }
 
