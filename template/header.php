@@ -16,14 +16,28 @@
     <!-- NAVBAR -->
     <nav id="main-navbar" class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="#">Navbar</a>
+            <span class="navbar-brand">
+                Hello, <?= $_SESSION['username']; ?>
+            </span>
+            <!-- <a class="navbar-brand" href="#">Navbar</a> -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
+                <!-- <div class="navbar-nav">
                     <a class="nav-item nav-link active" href="tampil_barang.php">Tabel Barang <span class="sr-only">(current)</span></a>
-                </div>
+                </div> -->
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link p-3 <?= basename($_SERVER['PHP_SELF']) == "tampil_barang.php" ? "active" : ""; ?>" href="tampil_barang.php">Tabel barang</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link p-3 <?= basename($_SERVER['PHP_SELF']) == "profile.php" ? "active" : ""; ?>" href="profile.php">My profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link p-3" href="logout.php">Logout</a>
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>

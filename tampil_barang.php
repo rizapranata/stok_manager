@@ -1,6 +1,9 @@
 <?php
 // jalankan init.php (untuk auto loader)
 require 'init.php';
+// cek apakah user sudah login atau belum
+$user = new User();
+$user->cekUserSession();
 
 // buat koneksi ke database
 $DB = DB::getInstance();

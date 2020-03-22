@@ -1,6 +1,9 @@
 <?php
 // jalankan init untuk session star dan auto loader
 require 'init.php';
+// cek apakah user udah login atau belum
+$user = new User();
+$user->cekUserSession();
 
 // halaman tidak bisa di aakses langsung. harus ada query string id_barang
 if (empty(Input::get('id_barang'))) {

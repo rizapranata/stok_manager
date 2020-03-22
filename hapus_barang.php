@@ -2,6 +2,9 @@
 // jalankan init.php untuk autoload
 require 'init.php';
 
+$user = new User();
+$user->cekUserSession();
+
 // halaman tidak bisa di akses lansung, harus ada query string id_barang
 if (empty(Input::get('id_barang'))) {
     die ('Maaf halaman ini tidak bisa di akses langsung');

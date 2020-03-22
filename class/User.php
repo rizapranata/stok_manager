@@ -85,4 +85,15 @@ class User {
         header('Location: tampil_barang.php');
     }
 
+    public function cekUserSession(){
+        if (!isset($_SESSION['username'])) {
+            header('Location: login.php');
+        }
+    }
+
+    public function logout(){
+        unset($_SESSION['username']);
+        header('Location: login.php');
+    }
+
 }
