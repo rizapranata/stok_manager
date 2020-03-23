@@ -56,7 +56,7 @@ include 'template/header.php';
             <form action="" method="POST">
                 <div class="form-group">
                     <label for="nama_barang">ID Barang</label>
-                    <input type="text" class="form-control" name="nama_barang" value="<?= $barang->getItem('id_barang'); ?>">
+                    <input type="text" class="form-control" name="nama_barang" value="<?= $barang->getItem('id_barang'); ?>" disabled>
                     <small class="d-block">*ID Barang tidak bisa diubah</small>
                 </div>
                 <div class="form-group">
